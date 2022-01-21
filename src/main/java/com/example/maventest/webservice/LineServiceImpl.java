@@ -28,10 +28,6 @@ public class LineServiceImpl implements LineService{
         return objectMapper.readValue(new File("./src/main/resources/lines"),
                 new TypeReference<List<Line>>(){});
     }
-    @Override
-    public Line getLineById(Long id) throws IOException {
-        return null;
-    }
 
     @Override
     public List<Line> getAllLines() throws IOException {
@@ -39,17 +35,29 @@ public class LineServiceImpl implements LineService{
     }
 
     @Override
-    public Line addLine(Line item) {
-        return null;
+    public Line addLine(Line line) {
+        lines.add(line);
+        return line;
     }
 
     @Override
-    public Line updateLine(Line item) {
+    public Line updateLine(Line line,String label) {
+        for(Line l : lines){
+            if(l.getId().equals(line.getId())){
+                l.setLabel(label);
+                return l;
+            }
+        }
         return null;
+
     }
 
     @Override
     public void deleteLine(Long id) {
-
+        for(Line l : lines){
+            if(l.getId().equals(id)){
+                lines.remove(l);
+            }
+        }
     }
 }

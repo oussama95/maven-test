@@ -7,9 +7,8 @@ import java.util.List;
 
 public interface LineService {
     List<Line> readJsonLines() throws IOException;
-    Line getLineById(Long id) throws IOException;
     List<Line> getAllLines() throws IOException;
-    Line addLine(Line item);
-    Line updateLine(Line item);
+    Line addLine(Line line);
+    Line updateLine(Line line,String label);
     void deleteLine(Long id);
 }
